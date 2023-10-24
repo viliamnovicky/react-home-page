@@ -1,0 +1,9 @@
+.crypto {
+    overflow-y: scroll;
+    width: 22vw;
+    height: 96vh;
+    position: fixed;
+    top: 2vh;
+    left: 5vw;
+    overflow-x: visible;
+  }

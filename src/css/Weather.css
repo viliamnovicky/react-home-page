@@ -1,0 +1,150 @@
+.weather {
+  width: 50vw;
+  height: 26rem;
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  background: var(--color-dark-2);
+  border-radius: 1rem;
+}
+
+.weather .search {
+  position: absolute;
+  right: 0rem;
+  top: 3rem;
+  margin: 0;
+  padding: 1rem;
+}
+
+.weather .search__input {
+  left:50%;
+  transform: translateX(-50%);
+}
+
+.weather__actual {
+    display: flex;
+}
+
+.weather__location {
+  height: 10rem;
+  color: white;
+  padding-top: 4.6rem;
+  font-size: 3.4rem;
+  text-align: left;
+  padding-left: 2rem;
+  font-weight: 100;
+  display: inline;
+}
+
+.weather__location span {
+  padding-left: 2rem;
+}
+
+.weather__icon {
+    display: inline;
+    width: 8rem;
+    height: 8rem;
+    margin-left: 2rem;
+    margin-top: 2rem;
+}
+
+.weather__icon--small {
+  width: 4rem;
+  height: 4rem;
+  padding-left: 1.5rem;
+  margin-left: 2rem;
+}
+
+.weather__cont {
+  border-radius: 1rem;
+  display: flex;
+  width: 100%;
+  height: calc(100% - 10rem);
+  background: white;
+  color: var(--color-dark-1);
+}
+
+.weather__info {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 7rem;
+  grid-template-columns: 1fr 3fr;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather__info:nth-child(2),
+.weather__info:nth-child(4) {
+  border-left: 1px solid rgb(26, 26, 26);
+  border-right: 1px solid rgb(26, 26, 26);
+}
+
+.weather__info--middle {
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.weather__info--middle img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  padding: 0;
+  margin: 0;
+  width: 6rem;
+  height: 6rem;
+}
+
+.weather__info--middle p {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  font-size: 2rem;
+  font-weight: 200;
+}
+
+.weather__cond {
+  width: 100%;
+} 
+
+
+
+.weather__img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  width: 100%;
+  z-index: 0;
+}
+.weather__img--cont {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 100%;
+  right: 0;
+  width: 50%;
+  overflow: hidden;
+  border-radius: 2rem;
+}
+.weather__info h3 {
+  display: grid;
+  justify-self: right;
+  padding-right: 1.5rem;
+}
+.weather__temp i,
+.weather__wind i {
+  padding-right: 1rem;
+  font-size: 5rem;
+  color: black;
+}

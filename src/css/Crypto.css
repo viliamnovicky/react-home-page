@@ -1,0 +1,55 @@
+.crypto__coins {
+  overflow-y: scroll;
+  width: 20vw;
+  height: calc(100vh - 7rem);
+  top: 0;
+  padding: 1rem;
+  padding-top: 1rem;
+  margin-left: 2.5vw;
+}
+
+.crypto__coin {
+  height: 20rem;
+  color: white;
+  padding: 1rem;
+  position: relative;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  background: var(--color-dark-2);
+}
+
+.crypto__coin:hover {
+    background: var(--color-dark-3);
+}
+
+.crypto__header {
+    text-align: center;
+    padding-right: 8rem;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.crypto__paragraph {
+    padding-left: 1rem;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    width: 23rem;
+    position: relative;
+}
+
+.crypto__paragraph span {
+    font-size: 2rem;
+    text-align: right;
+    position: absolute;
+    right: 0;
+}
+
+.crypto__error {
+  font-size: 3rem;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  width: 38rem;
+  padding: 1rem;
+}
