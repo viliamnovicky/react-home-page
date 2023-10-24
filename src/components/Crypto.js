@@ -1,8 +1,14 @@
 import "../css/Crypto.css";
 
-export default function Crypto({ coin, setOpenModal }) {
+export default function Crypto({ coin, setOpenModal, coinData, setCoinData, setError={setError} }) {
+  
+  function handleSetCoinData(coin) {
+    setCoinData(coin.id);
+    setOpenModal(true)
+  }
+
   return (
-    <div className="crypto__coin" id={coin.id} data-position={coin.market_cap_rank} onClick={() => setOpenModal(true)}>
+    <div className="crypto__coin" id={coin.id} data-position={coin.market_cap_rank} onClick={() => handleSetCoinData(coin)}>
       <h1 className="crypto__header">
         #{coin.market_cap_rank} {coin.symbol.toUpperCase()}
       </h1>

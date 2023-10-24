@@ -3,13 +3,17 @@ import Crypto from "./Crypto";
 import { useEffect, useState } from "react";
 import ErrorMessage from "./ErrorMessage";
 import Search from "./Search";
+import Modal from "./Modal";
+import CryptoModal from "./CryptoModal";
 
-export default function CryptoList({ query, setQuery, error, setError, setOpenModal,children }) {
+export default function CryptoList({ query, setQuery, error, setError, setOpenModal, children }) {
   const [cryptoData, setCryptoData] = useState([]);
+  const [cryptoModal, setCryptoModal] = useState(false);
+  const [coinData, setCoinData] = useState([]);
 
-  function handleOpenCryptoModal() {
-    setOpenModal(true)
-    
+  function handleSetCoinData(coin) {
+    setCoinData(coin);
+    console.log(coin);
   }
 
   if (query.length > 3) {
@@ -64,25 +68,42 @@ export default function CryptoList({ query, setQuery, error, setError, setOpenMo
 
   return (
     <>
-      
-      
-      <Search query={query} setQuery={setQuery} placeholder={"search coins..."}/>
+      <Search query={query} setQuery={setQuery} placeholder={"search coins..."} />
 
       {!error && cryptoData.length > 1 && (
         <div className="crypto__coins">
           {cryptoData.map((coin) => (
-            <Crypto setOpenModal={setOpenModal} coin={coin} key={coin.id} />
+            <Crypto
+              setOpenModal={setCryptoModal}
+              coinData={coinData}
+              setCoinData={setCoinData}
+              coin={coin}
+              key={coin.id}
+              setError={setError}
+            />
           ))}
         </div>
       )}
       {!error && cryptoData.length === 1 && (
         <div className="crypto__coins">
           {cryptoData.map((coin) => (
-            <Crypto setOpenModal={setOpenModal} coin={coin} key={coin.id} />
+            <Crypto
+              setOpenModal={setCryptoModal}
+              coinData={coinData}
+              setCoinData={setCoinData}
+              coin={coin}
+              key={coin.id}
+              setError={setError}
+            />
           ))}
         </div>
       )}
       {error && <ErrorMessage message={error} />}
+      {
+        <Modal openModal={cryptoModal} setOpenModal={setCryptoModal}>
+          <CryptoModal coinData={coinData}/>
+        </Modal>
+      }
     </>
   );
 }
