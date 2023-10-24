@@ -1,0 +1,22 @@
+.btn {
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+.btn__close {
+    width: 4rem;
+    height: 4rem;
+    background: rgba(36, 36, 36, .4);
+    color: white;
+    border-radius: 50%;
+}
+
+.btn__close:hover {
+    background: rgba(36, 36, 36, 1);
+}
+
+.btn:hover {
+    opacity: 1;
+}

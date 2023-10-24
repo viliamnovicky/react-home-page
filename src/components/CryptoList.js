@@ -4,8 +4,13 @@ import { useEffect, useState } from "react";
 import ErrorMessage from "./ErrorMessage";
 import Search from "./Search";
 
-export default function CryptoList({ query, setQuery, error, setError, children }) {
+export default function CryptoList({ query, setQuery, error, setError, setOpenModal,children }) {
   const [cryptoData, setCryptoData] = useState([]);
+
+  function handleOpenCryptoModal() {
+    setOpenModal(true)
+    
+  }
 
   if (query.length > 3) {
   }
@@ -63,10 +68,17 @@ export default function CryptoList({ query, setQuery, error, setError, children 
       
       <Search query={query} setQuery={setQuery} placeholder={"search coins..."}/>
 
-      {!error && (
+      {!error && cryptoData.length > 1 && (
         <div className="crypto__coins">
           {cryptoData.map((coin) => (
-            <Crypto coin={coin} key={coin.id} />
+            <Crypto setOpenModal={setOpenModal} coin={coin} key={coin.id} />
+          ))}
+        </div>
+      )}
+      {!error && cryptoData.length === 1 && (
+        <div className="crypto__coins">
+          {cryptoData.map((coin) => (
+            <Crypto setOpenModal={setOpenModal} coin={coin} key={coin.id} />
           ))}
         </div>
       )}

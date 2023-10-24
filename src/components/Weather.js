@@ -5,10 +5,10 @@ import Search from "./Search";
 
 export default function Weather({ error, setError }) {
   const [weather, setWeather] = useState("");
-  const [futureWeather, setFutureWeather] = useState("");
-  const [locationQuery, setLocationQuery] = useState("")
+  const [locationQuery, setLocationQuery] = useState("");
   const lat = "47.49209";
   const long = "11.09576";
+
   useEffect(
     function () {
       const controller = new AbortController();
@@ -53,7 +53,11 @@ export default function Weather({ error, setError }) {
           <h1 className="weather__location">
             Garmisch Partenkirchen<span>{weather.current.temp_c}°C</span>
           </h1>
-          <Search query={locationQuery} setQuery={setLocationQuery} placeholder={"search location..."}/>
+          <Search
+            query={locationQuery}
+            setQuery={setLocationQuery}
+            placeholder={"search location..."}
+          />
         </div>
       )}
       {!weather && <h1>Something went wrong</h1>}

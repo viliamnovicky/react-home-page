@@ -10,6 +10,10 @@
   --color-dark-1:rgb(36, 36, 36);
   --color-dark-2:rgb(72, 72, 72);
   --color-dark-3:rgb(108, 108, 108);
+
+  --alpha-1: 1
+  --alpha-2: .5
+  --alpha-3: .2
 }
 
 html {

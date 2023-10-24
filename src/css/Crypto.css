@@ -6,6 +6,7 @@
   padding: 1rem;
   padding-top: 1rem;
   margin-left: 2.5vw;
+  position: relative;
 }
 
 .crypto__coin {
