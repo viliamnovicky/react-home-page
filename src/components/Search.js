@@ -1,6 +1,7 @@
 import "../css/Search.css";
 
-export default function Search({ query, setQuery, placeholder }) {
+export default function Search({ query, setQuery, placeholder}) {
+  
   return (
     <div className="search">
       <input

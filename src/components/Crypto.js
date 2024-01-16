@@ -1,9 +1,23 @@
+import { useState } from "react";
 import "../css/Crypto.css";
 
-export default function Crypto({ coin, setOpenModal, coinData, setCoinData, setError={setError} }) {
-  
+export default function Crypto({ coin, setOpenModal, setCryptoData, setModalId, modalId, setError, coinData, setCoinModalData }) {
+
+  async function fetchCoinData(id) {
+    try {
+      const res = await fetch(`https://api.coingecko.com/api/v3/coins/${id}`);
+      const data = await res.json();
+      if (data.error) return;
+      setCoinModalData([data]);
+      console.log(data)
+    } catch (err) {
+      if (err.name !== "AbortError") setError(err.message);
+    }
+  }
+
   function handleSetCoinData(coin) {
-    setCoinData(coin.id);
+    setCryptoData(coin.id);
+    fetchCoinData(coin.id)
     setOpenModal(true)
   }
 

@@ -94,6 +94,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.crypto__modal-stat p {
+  font-size: 2rem;
 }
 
 .crypto__modal-stat:nth-child(2),

@@ -10,12 +10,8 @@ export default function CryptoList({ query, setQuery, error, setError, setOpenMo
   const [cryptoData, setCryptoData] = useState([]);
   const [cryptoModal, setCryptoModal] = useState(false);
   const [coinData, setCoinData] = useState([]);
-
-  function handleSetCoinData(coin) {
-    setCoinData(coin);
-    console.log(coin);
-  }
-
+  const [modalCoinData, setModalCoinData] = useState([])
+  
   if (query.length > 3) {
   }
 
@@ -76,10 +72,12 @@ export default function CryptoList({ query, setQuery, error, setError, setOpenMo
             <Crypto
               setOpenModal={setCryptoModal}
               coinData={coinData}
-              setCoinData={setCoinData}
+              setCryptoData={setCryptoData}
               coin={coin}
               key={coin.id}
               setError={setError}
+              modalCoinData={modalCoinData}
+              setModalCoinData={setModalCoinData}
             />
           ))}
         </div>
@@ -90,10 +88,12 @@ export default function CryptoList({ query, setQuery, error, setError, setOpenMo
             <Crypto
               setOpenModal={setCryptoModal}
               coinData={coinData}
-              setCoinData={setCoinData}
+              setCryptoData={setCryptoData}
               coin={coin}
               key={coin.id}
               setError={setError}
+              modalCoinData={modalCoinData}
+              setModalCoinData={setModalCoinData}
             />
           ))}
         </div>
@@ -101,7 +101,7 @@ export default function CryptoList({ query, setQuery, error, setError, setOpenMo
       {error && <ErrorMessage message={error} />}
       {
         <Modal openModal={cryptoModal} setOpenModal={setCryptoModal}>
-          <CryptoModal coinData={coinData}/>
+          <CryptoModal modalCoinData={modalCoinData}/>
         </Modal>
       }
     </>
