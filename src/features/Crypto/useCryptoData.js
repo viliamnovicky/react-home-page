@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCryptoData } from "../../services/apiCrypto";
+import { getCoinData, getCryptoData } from "../../services/apiCrypto";
 
 export function useCryptoData() {
     const {isLoading, data: cryptoData, error} = useQuery({
@@ -8,3 +8,11 @@ export function useCryptoData() {
     })
     return {isLoading, error, cryptoData}
 } 
+
+export function useCoinData(coinId) {
+    const {isLoading, data: coinData, error} = useQuery({
+        queryKey: ["coin"],
+        queryFn: getCoinData(coinId)
+    })
+    return {isLoading, error, coinData}
+}

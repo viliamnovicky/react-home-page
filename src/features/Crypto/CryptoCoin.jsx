@@ -1,15 +1,13 @@
 import "../../css/Crypto.css";
 
-function CryptoCoin({ coin }) {
-  function handleSetCoinData() {
-    console.log(coin.id);
-  }
+function CryptoCoin({ coin, onClick }) {
+  
   return (
     <div
       className="crypto__coin"
       id={coin.id}
       data-position={coin.market_cap_rank}
-      onClick={() => handleSetCoinData(coin)}
+      onClick={onClick}
     >
       <h1 className="crypto__header">
         #{coin.market_cap_rank} {coin.symbol.toUpperCase()}

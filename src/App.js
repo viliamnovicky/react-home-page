@@ -23,6 +23,7 @@ function App() {
         <Weather error={error} setError={setError} />
         <DieselPrice error={error} setError={setError} />
       </div>
+
     </QueryClientProvider>
   );
 }
