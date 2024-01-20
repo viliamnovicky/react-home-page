@@ -4,6 +4,8 @@ import Weather from "./components/Weather";
 import DieselPrice from "./components/DieselPrice";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ToDoList from "./features/ToDoList/ToDoList";
+import GlobalStyles from "./styles/GlobalStyles";
+import Modal from "./ui/Modal";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,13 +21,14 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="App">
+      <GlobalStyles />
+      
         <CryptoList query={cryptoQuery} setQuery={setCryptoQuery} />
         <Weather error={error} setError={setError} />
         <DieselPrice error={error} setError={setError} />
-        <ToDoList/>
-      </div>
-
+        <ToDoList />
+        {/* <Modal/> */}
+      
     </QueryClientProvider>
   );
 }
