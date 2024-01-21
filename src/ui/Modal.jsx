@@ -13,7 +13,7 @@ const Outer = styled.div`
 const Inner = styled.div`
   width: 70vw;
   height: 75vh;
-  background: var(--color-grey-100);
+  background: var(--color-grey-50);
   border-radius: 2rem;
   position: absolute;
   left: 50%;
@@ -26,7 +26,7 @@ width: 5rem;
 height: 5rem;
 border-radius: 50%;
 border: none;
-background: var(--color-grey-300);
+background: var(--color-grey-100);
 cursor: pointer;
 position: absolute;
 right: 1rem;

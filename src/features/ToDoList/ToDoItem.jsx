@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import Button from "../../ui/Buttons";
 
 const TaskContainer = styled.div`
   text-align: left;
@@ -31,6 +32,7 @@ const CheckBoxHidden = styled.input`
   &:checked ~ label ~ p {
     text-decoration: line-through;
     opacity: 0.7;
+    padding-right: 0
   }
 `;
 
@@ -39,9 +41,9 @@ const Label = styled.label`
   height: 3rem;
   border-radius: 50%;
   border: 5px solid white;
-  outline: 2px solid black;
+  background: var(--color-grey-100);
+  outline: 1px solid var(--color-grey-400);
   position: absolute;
-  left: 2rem;
   cursor: pointer;
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
@@ -56,38 +58,21 @@ const Label = styled.label`
 const Task = styled.p`
 padding-right: 2rem;
 font-size: 2rem;
+text-align: left;
+width: 60%;
+text-align: right;
 `;
 
-const Button = styled.button`
-    
-    transform: translateX(-50%);
-    width: 7rem;
-    height: 3rem;
-    font-size: 1rem;
-    text-transform: uppercase;
-    border-radius: 50rem;
-    border: none;
-    cursor: pointer;
 
-    color: var(--color-red-500);
-      outline: .2rem solid var(--color-red-600);
-    
-
-    &:hover {
-      background: var(--color-red-600);
-      color: var(--color-red-50);
-    }
-`
-
-function ToDoItem({ task }) {
-  const [isChecked, setIsChecked] = useState(false);
+function ToDoItem({ task, checked, onClick }) {
+  const [isChecked, setIsChecked] = useState(checked);
   
   return (
     <TaskContainer>
       <CheckBoxHidden id={task} type="checkbox" checked={isChecked} onChange={() => setIsChecked((isChecked) => !isChecked)}/>
-      <Label for={task}></Label>
+      <Label for={task}/>
       <Task>{task}</Task>
-      {isChecked && <Button>delete</Button>}
+      {isChecked && <Button size={"small"} variation="redSecondary" onClick={onClick}>delete</Button>}
     </TaskContainer>
   );
 }
