@@ -56,7 +56,6 @@ const Label = styled.label`
   }
 `;
 const Task = styled.p`
-padding-right: 2rem;
 font-size: 2rem;
 text-align: left;
 width: 60%;

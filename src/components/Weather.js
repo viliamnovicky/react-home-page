@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../css/Weather.css";
 import WeatherData from "./WeatherData";
 import Search from "./Search";
-import { useGeolocation } from "./useGeolocation";
+import { useGeolocation } from "../features/Weather/useGeolocation";
 
 export default function Weather({ error, setError }) {
   const [weather, setWeather] = useState("");
