@@ -29,7 +29,7 @@ function App() {
         <DieselPrice error={error} setError={setError} />
         <ToDoList />
         {/* <Modal/> */}
-        <Weather/>
+        <Weather />
       
     </QueryClientProvider>
   );

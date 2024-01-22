@@ -6,6 +6,11 @@ const sizes = {
     height: 3rem;
     font-size: 1rem;
   `,
+  medium: css`
+  width: 9rem;
+  height: 4rem;
+  font-size: 1.5rem;
+`,
   large: css`
     width: 15rem;
     height: 5rem;
@@ -13,6 +18,15 @@ const sizes = {
 };
 
 const variations = {
+  primary: css`
+    color: var(--color-grey-50);
+    background-color: var(--color-grey-500);
+    border-radius: 1rem;
+
+    &:hover {
+      background-color: var(--color-grey-700);
+    }
+  `,
   green: css`
     color: var(--color-green-50);
     background-color: var(--color-green-500);

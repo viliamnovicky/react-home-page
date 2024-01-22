@@ -8,14 +8,14 @@
   overflow: hidden;
   background: var(--color-dark-2);
   border-radius: 1rem;
+  padding: 0 1rem 1rem 1rem;
 }
 
 .weather .search {
   position: absolute;
-  right: 0rem;
+  right: -.7rem;
   top: 3rem;
   margin: 0;
-  padding: 1rem;
 }
 
 .weather .search__input {
@@ -33,9 +33,9 @@
   padding-top: 4.6rem;
   font-size: 3.4rem;
   text-align: left;
-  padding-left: 2rem;
   font-weight: 100;
   display: inline;
+
 }
 
 .weather__location span {
