@@ -7,6 +7,7 @@ import ToDoList from "./features/ToDoList/ToDoList";
 import GlobalStyles from "./styles/GlobalStyles";
 import Modal from "./ui/Modal";
 import Weather from "./features/Weather/Weather";
+import Diesel from "./features/Diesel/Diesel";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -18,7 +19,6 @@ const queryClient = new QueryClient({
 
 function App() {
   const [cryptoQuery, setCryptoQuery] = useState("");
-  const [error, setError] = useState("");
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -26,7 +26,8 @@ function App() {
       
         <CryptoList query={cryptoQuery} setQuery={setCryptoQuery} />
         {/* <Weather error={error} setError={setError} /> */}
-        <DieselPrice error={error} setError={setError} />
+        {/* <DieselPrice /> */}
+        <Diesel/>
         <ToDoList />
         {/* <Modal/> */}
         <Weather />

@@ -5,6 +5,7 @@ import { useGeolocation } from "./useGeolocation";
 import styled from "styled-components";
 import { useState } from "react";
 import Button from "../../ui/Buttons";
+import Spinner from "../../ui/Spinner";
 const latt = "47.49209";
 const longg = "11.09576";
 
@@ -18,7 +19,7 @@ const StyledWeather = styled.div`
   overflow: hidden;
   background: var(--color-dark-2);
   border-radius: 1rem;
-  padding: 0 1rem 0 1rem;
+  padding: 0rem 1rem 1rem 1rem;
 
   input {
     position: absolute;
@@ -57,6 +58,7 @@ function Weather() {
   
   return (
     <StyledWeather>
+      {isLoading && <Spinner size={150} color={"var(--color-grey-50)"}/>}
       {weatherData && (
         <div className="weather__actual">
           {/* <img
@@ -64,9 +66,9 @@ function Weather() {
         className="weather__icon"
         src={weather.current.condition.icon}
       ></img> */}
-          <Header>
+          {isLoading ? <Spinner/> : <Header>
             {weatherData.location.name} <span>{weatherData.current.temp_c}°C</span>
-          </Header>
+          </Header>}
           <Button variation="primary" size="medium">
             poloha
           </Button>
@@ -78,7 +80,6 @@ function Weather() {
           />
         </div>
       )}
-      {!weatherData && <h1>Something went wrong</h1>}
       <WeatherData weather={weatherData}></WeatherData>
     </StyledWeather>
   );
