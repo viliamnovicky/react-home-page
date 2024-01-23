@@ -6,8 +6,8 @@ export function useDieselGermanyData() {
         queryKey:"dieselGermany",
         queryFn: getDieselPriceGermany
     })
-    console.log(dieselGermanyData)
-    return {isLoadingDieselGermany, dieselGermanyData, errorGermany}
+    
+    return {isLoadingDieselGermany, errorGermany, dieselGermanyData}
 }
 
 export function useDieselAustriaData() {
@@ -15,6 +15,6 @@ export function useDieselAustriaData() {
         queryKey:"dieselAustria",
         queryFn: getDieselPriceAustria
     })
-    console.log(dieselAustriaData)
-    return {isLoadingDieselAustria, dieselAustriaData, errorAustria}
+    
+    return {isLoadingDieselAustria, errorAustria, dieselAustriaData}
 }

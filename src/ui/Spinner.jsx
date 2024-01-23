@@ -5,13 +5,13 @@ const StyledSpinner = styled.div`
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50% -50%);
+    transform: translate(-50%, -50%);
+    z-index: 1;
 `
 
 function Spinner({size, color}) {
     return (
         <StyledSpinner>
-
             <HashLoader size={size} color={color}/>
         </StyledSpinner>
     )

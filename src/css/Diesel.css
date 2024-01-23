@@ -17,26 +17,6 @@
     padding-top: 1rem;
 }
 
-.diesel__bg {
-    position:absolute;
-    right: 0;
-    bottom: -4rem;
-    width: 70%;
-    opacity: .2;
-}
-
-.diesel__place {
-    color: white;
-    font-size: 1.6rem;
-    padding: 1.5rem;
-    padding-left: 1rem;
-    padding-right: 5rem;
-    width: 18vw;
-    margin: auto;
-    position: relative;
-    border-bottom: 1px solid white;
-
-}
 
 .diesel__place:last-child {
     border-bottom: none;
