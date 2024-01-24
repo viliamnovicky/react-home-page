@@ -4,6 +4,7 @@ import CryptoCoin from "./CryptoCoin";
 import { useCryptoData } from "./useCryptoData";
 import { useState } from "react";
 import CryptoModal from "../../components/CryptoModal";
+import Modal from "../../ui/Modal"
 
 function CryptoList({ query, setQuery }) {
   const { isLoading, cryptoData } = useCryptoData();
@@ -27,7 +28,7 @@ function CryptoList({ query, setQuery }) {
             <CryptoCoin coin={coin} key={coin.id} onClick={() => handleOpenModal(coin)} />
           ))}
       </div>
-      {isOpenModal && <CryptoModal coinModalData={coinId} />}
+      {isOpenModal && <Modal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}/>}
     </>
   );
 }

@@ -8,6 +8,7 @@ const Outer = styled.div`
   top: 0;
   background: rgba(26, 26, 26, 0.2);
   backdrop-filter: blur(4px);
+  z-index: 100;
 `;
 
 const Inner = styled.div`
@@ -40,11 +41,11 @@ font-weight: 800;
     font-size: 2rem;
 }
 ` 
-export default function Modal({ children, openModal, setOpenModal }) {
+export default function Modal({ children, isOpenModal, setIsOpenModal }) {
   return (
     <Outer>
       <Inner>
-        <Button onClick={() => setOpenModal(false)}>
+        <Button onClick={() => setIsOpenModal(false)}>
           &#x2715;
         </Button>
         {children}
