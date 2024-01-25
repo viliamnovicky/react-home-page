@@ -3,19 +3,18 @@ import Search from "../../components/Search";
 import CryptoCoin from "./CryptoCoin";
 import { useCryptoData } from "./useCryptoData";
 import { useState } from "react";
-import CryptoModal from "../../components/CryptoModal";
-import Modal from "../../ui/Modal"
+import CryptoModal from "./CryptoModal";
+import Modal from "../../ui/Modal";
 
 function CryptoList({ query, setQuery }) {
   const { isLoading, cryptoData } = useCryptoData();
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [coinId, setCoinId] = useState("")
+  const [coin, setCoin] = useState("");
 
   function handleOpenModal(coin) {
     setIsOpenModal(true);
-    setCoinId(coin.id)
-    console.log(isOpenModal)
-    console.log(coin.id)
+    setCoin(coin);
+    console.log(coin);
   }
 
   return (
@@ -28,7 +27,13 @@ function CryptoList({ query, setQuery }) {
             <CryptoCoin coin={coin} key={coin.id} onClick={() => handleOpenModal(coin)} />
           ))}
       </div>
-      {isOpenModal && <Modal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}/>}
+      {isOpenModal && (
+        <Modal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}>
+          <CryptoModal coin={coin}>
+            <p>{coin.id}</p>
+          </CryptoModal>
+        </Modal>
+      )}
     </>
   );
 }

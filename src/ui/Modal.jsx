@@ -27,16 +27,17 @@ width: 5rem;
 height: 5rem;
 border-radius: 50%;
 border: none;
-background: var(--color-grey-100);
+background: var(--color-grey-800);
 cursor: pointer;
 position: absolute;
 right: 1rem;
 top: 1rem;
 font-weight: 800;
+z-index: 10000;
+color: var(--color-grey-50);
 
 &:hover {
-    background: var(--color-grey-600);
-    color: var(--color-grey-50);
+    background: var(--color-grey-900);
     transform: rotate(90deg);
     font-size: 2rem;
 }
