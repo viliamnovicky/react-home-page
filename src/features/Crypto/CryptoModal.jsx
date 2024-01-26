@@ -39,8 +39,8 @@ const CryptoStats = styled.div`
   position: absolute;
   width: 100%;
   bottom: 0;
-  gap: 5px;  
-  padding: .5rem;
+  gap: 5px;
+  padding: 0.5rem;
 `;
 
 const Image = styled.img`
@@ -57,15 +57,20 @@ const Box = styled.div`
   width: 100%;
   display: flex;
   height: 20vh;
-  background: rgba(200, 200, 200, .05);
+  background: rgba(200, 200, 200, 0.05);
   border-radius: 2rem;
 
-  span {
+  p {
     text-align: center;
     margin: auto;
     color: var(--color-grey-50);
     text-transform: uppercase;
     font-size: 2rem;
+  }
+
+  span {
+    display: block;
+    padding-top: 2rem;
   }
 `;
 
@@ -80,31 +85,35 @@ function CryptoModal({ coin }) {
         <Image src={coin.image}></Image>
         <CryptoStats>
           <Box>
-            <span>CurrentPrice: {coin.current_price}$</span>
+            <p>Current Price: <span>{coin.current_price}$</span></p>
           </Box>
           <Box>
-            <span>Highest price (24h): {coin.high_24h}$</span>
+            <p>Highest price (24h): <span>{coin.high_24h}$</span></p>
           </Box>
           <Box>
-            <span>Max Supply: {coin.max_supply} {coin.symbol.toUpperCase()}</span>
+            <p>
+              Max Supply: <span>{coin.max_supply ? coin.max_supply : "???"} {coin.symbol.toUpperCase()}</span>
+            </p>
           </Box>
           <Box>
-            <span>Max Supply: {coin.max_supply} {coin.symbol.toUpperCase()}</span>
+            <p>ATH: <span>{coin.ath}$</span></p>
           </Box>
           <Box>
-            <span>Max Supply: {coin.max_supply} {coin.symbol.toUpperCase()}</span>
+            <p>Lowest price (24h): <span>{coin.low_24h}$</span></p>
           </Box>
           <Box>
-            <span>Max Supply: {coin.max_supply} {coin.symbol.toUpperCase()}</span>
+            <p>
+              Total supply: <span>{coin.total_supply} {coin.symbol.toUpperCase()}</span>
+            </p>
           </Box>
           <Box>
-            <span>Max Supply: {coin.max_supply} {coin.symbol.toUpperCase()}</span>
+            <p>ATL: <span>{coin.atl}$</span></p>
           </Box>
           <Box>
-            <span>Max Supply: {coin.max_supply} {coin.symbol.toUpperCase()}</span>
+            <p>Price change (24h): <span>{coin.price_change_24h}$</span></p>
           </Box>
           <Box>
-            <span>Max Supply: {coin.max_supply} {coin.symbol.toUpperCase()}</span>
+            <p>Market cap: <span>{coin.market_cap}$</span></p>
           </Box>
         </CryptoStats>
       </StyledCryptoModal>
