@@ -74,6 +74,10 @@ const Box = styled.div`
   }
 `;
 
+function formatNumber(number) {
+  number.toLocaleString("en-US", {group: " "})
+}
+
 function CryptoModal({ coin }) {
   return (
     <>
@@ -85,35 +89,35 @@ function CryptoModal({ coin }) {
         <Image src={coin.image}></Image>
         <CryptoStats>
           <Box>
-            <p>Current Price: <span>{coin.current_price}$</span></p>
+            <p>Current Price: <span>{coin.current_price.toLocaleString()}$</span></p>
           </Box>
           <Box>
-            <p>Highest price (24h): <span>{coin.high_24h}$</span></p>
-          </Box>
-          <Box>
-            <p>
-              Max Supply: <span>{coin.max_supply ? coin.max_supply : "???"} {coin.symbol.toUpperCase()}</span>
-            </p>
-          </Box>
-          <Box>
-            <p>ATH: <span>{coin.ath}$</span></p>
-          </Box>
-          <Box>
-            <p>Lowest price (24h): <span>{coin.low_24h}$</span></p>
+            <p>Highest price (24h): <span>{coin.high_24h.toLocaleString()}$</span></p>
           </Box>
           <Box>
             <p>
-              Total supply: <span>{coin.total_supply} {coin.symbol.toUpperCase()}</span>
+              Max Supply: <span>{coin.max_supply ? coin.max_supply.toLocaleString() : "???"} {coin.symbol.toUpperCase()}</span>
             </p>
           </Box>
           <Box>
-            <p>ATL: <span>{coin.atl}$</span></p>
+            <p>ATH: <span>{coin.ath.toLocaleString()}$</span></p>
           </Box>
           <Box>
-            <p>Price change (24h): <span>{coin.price_change_24h}$</span></p>
+            <p>Lowest price (24h): <span>{coin.low_24h.toLocaleString()}$</span></p>
           </Box>
           <Box>
-            <p>Market cap: <span>{coin.market_cap}$</span></p>
+            <p>
+              Total supply: <span>{coin.total_supply.toLocaleString()} {coin.symbol.toUpperCase()}</span>
+            </p>
+          </Box>
+          <Box>
+            <p>ATL: <span>{coin.atl.toLocaleString()}$</span></p>
+          </Box>
+          <Box>
+            <p>Price change (24h): <span>{coin.price_change_24h.toLocaleString()}$</span></p>
+          </Box>
+          <Box>
+            <p>Market cap: <span>{coin.market_cap.toLocaleString()}$</span></p>
           </Box>
         </CryptoStats>
       </StyledCryptoModal>
