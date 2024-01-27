@@ -45,6 +45,7 @@ html {
 
 body {
     position: relative;
+    height: 100vh;
 }
 }`;
 

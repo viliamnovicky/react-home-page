@@ -15,18 +15,29 @@ function CryptoList({ query, setQuery }) {
     setIsOpenModal(true);
     setCoin(coin);
     console.log(coin);
+    console.log(coin.id.includes("b"));
   }
 
   return (
     <>
       <Search query={query} setQuery={setQuery} placeholder={"search coins..."} />
-      <div className="crypto__coins">
-        {!cryptoData && <div>fuck it</div>}
-        {cryptoData &&
-          cryptoData.map((coin) => (
-            <CryptoCoin coin={coin} key={coin.id} onClick={() => handleOpenModal(coin)} />
-          ))}
-      </div>
+
+      {query.length === 0 && (
+        <div className="crypto__coins">
+          {!cryptoData && <div>fuck it</div>}
+          {cryptoData &&
+            cryptoData.map((coin) => (
+              <CryptoCoin coin={coin} key={coin.id} onClick={() => handleOpenModal(coin)} />
+            ))}
+        </div>
+      )}
+      {query.length > 0 && <div className="crypto__coins">
+          {!cryptoData && <div>fuck it</div>}
+          {cryptoData &&
+            cryptoData.map((coin) => (coin.id.includes(query) || coin.symbol.includes(query)) && (
+              <CryptoCoin coin={coin} key={coin.id} onClick={() => handleOpenModal(coin)} />
+            ))}
+        </div>}
       {isOpenModal && (
         <Modal isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal}>
           <CryptoModal coin={coin}>

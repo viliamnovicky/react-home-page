@@ -6,7 +6,7 @@ import Button from "../../ui/Buttons";
 
 const ListContainer = styled.div`
   position: absolute;
-  bottom: 0rem;
+  bottom: 1rem;
   right: 5rem;
   width: 20vw;
   height: 70rem;
