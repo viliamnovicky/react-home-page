@@ -1,13 +1,10 @@
-import Search from "../../components/Search";
+import Search from "../../ui/Search";
 import { useWeatherData } from "./useWeatherData";
-import WeatherData from "../../components/WeatherData";
-import { useGeolocation } from "./useGeolocation";
 import styled from "styled-components";
 import { useState } from "react";
 import Button from "../../ui/Buttons";
 import Spinner from "../../ui/Spinner";
-const latt = "47.49209";
-const longg = "11.09576";
+import WeatherActual from "./WeatherActual";
 
 const StyledWeather = styled.div`
   width: 50vw;
@@ -38,6 +35,10 @@ const StyledWeather = styled.div`
     }
 `;
 
+const WeatherHeader = styled.div`
+  display: flex;
+`
+
 const Header = styled.h1`
   height: 5rem;
   color: white;
@@ -60,12 +61,7 @@ function Weather() {
     <StyledWeather>
       {isLoading && <Spinner size={150} color={"var(--color-grey-50)"}/>}
       {weatherData && (
-        <div className="weather__actual">
-          {/* <img
-        alt={weather.current.condition.icon}
-        className="weather__icon"
-        src={weather.current.condition.icon}
-      ></img> */}
+        <WeatherHeader>
           {isLoading ? <Spinner/> : <Header>
             {weatherData.location.name} <span>{weatherData.current.temp_c}°C</span>
           </Header>}
@@ -78,9 +74,9 @@ function Weather() {
             placeholder={"search location..."}
             value={locationQuery}
           />
-        </div>
+        </WeatherHeader>
       )}
-      <WeatherData weather={weatherData}></WeatherData>
+      <WeatherActual weather={weatherData}/>
     </StyledWeather>
   );
 }

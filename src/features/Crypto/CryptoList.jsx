@@ -1,5 +1,5 @@
 import "../../css/CryptoList.css";
-import Search from "../../components/Search";
+import Search from "../../ui/Search";
 import CryptoCoin from "./CryptoCoin";
 import { useCryptoData } from "./useCryptoData";
 import { useState } from "react";

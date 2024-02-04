@@ -1,19 +1,29 @@
-import "../css/Weather.css";
-import WeatherCont from "./WeatherCont";
-import temperature from "../img/icons/temperature.svg";
-import temperatureMax from "../img/icons/temperature-max.svg";
-import temperatureMin from "../img/icons/temperature-min.svg";
-import temperatureFeel from "../img/icons/temperature-feelslike.svg";
-import wind from "../img/icons/wind.svg";
-import visibility from "../img/icons/visibility.svg";
-import sunrise from "../img/icons/sunrise.svg";
-import sunset from "../img/icons/sunset.svg";
-import ErrorMessage from "./ErrorMessage";
+import "../../css/Weather.css";
 
-export default function WeatherData({ weather, error }) {
+import WeatherCont from "./WeatherCont";
+import temperature from "../../img/icons/temperature.svg";
+import temperatureMax from "../../img/icons/temperature-max.svg";
+import temperatureMin from "../../img/icons/temperature-min.svg";
+import temperatureFeel from "../../img/icons/temperature-feelslike.svg";
+import wind from "../../img/icons/wind.svg";
+import visibility from "../../img/icons/visibility.svg";
+import sunrise from "../../img/icons/sunrise.svg";
+import sunset from "../../img/icons/sunset.svg";
+import styled from "styled-components";
+
+const WeatherContainer = styled.div`
+  border-radius: 1rem;
+  display: flex;
+  width: 100%;
+  height: calc(100% - 10rem);
+  background: white;
+  color: var(--color-dark-1);
+`;
+
+function WeatherActual({ weather }) {
   return (
-    <div className="weather__cont">
-      {weather && !error ? (
+    <WeatherContainer>
+      {weather && (
         <>
           <WeatherCont
             icon1={temperature}
@@ -55,9 +65,9 @@ export default function WeatherData({ weather, error }) {
             data2={weather.forecast.forecastday[0].astro.sunset}
           />
         </>
-      ) : (
-        <ErrorMessage message={error}/>
       )}
-    </div>
+    </WeatherContainer>
   );
 }
+
+export default WeatherActual;
