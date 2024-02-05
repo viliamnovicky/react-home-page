@@ -6,6 +6,7 @@ import GlobalStyles from "./styles/GlobalStyles";
 import Modal from "./ui/Modal";
 import Weather from "./features/Weather/Weather";
 import Diesel from "./features/Diesel/Diesel";
+import Dexcom from "./features/Dexcom/Dexcom";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,7 +28,7 @@ function App() {
         <ToDoList />
         {/* <Modal/> */}
         <Weather />
-      
+        <Dexcom/>
     </QueryClientProvider>
   );
 }
