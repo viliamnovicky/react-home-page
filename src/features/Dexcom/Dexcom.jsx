@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import { useDexcomData } from "./useDexcomData";
+import { useDexcomData, useDexcomToken } from "./useDexcomData";
 
 const Link = styled.a`
   padding: 2rem 5rem;
@@ -25,8 +25,8 @@ const DexcomPanel = styled.div``;
 function Dexcom() {
   const queryParameters = new URLSearchParams(window.location.search);
   const code = queryParameters.get("code");
-  const {isLoadingDexcomData, dexcomData, errorDexcom} = useDexcomData(code)
-  console.log(dexcomData)
+  const {isLoadingDexcomToken, dexcomToken, errorDexcomToken} = useDexcomToken(code)
+  console.log(dexcomToken)
 
   if (!code)
     return (

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getDexcomData } from "../../services/apiDexcom";
+import { getDexcomData, getDexcomToken } from "../../services/apiDexcom";
 
 
   export function useDexcomData(key) {
@@ -9,4 +9,13 @@ import { getDexcomData } from "../../services/apiDexcom";
     })
 
     return {isLoadingDexcomData, dexcomData, errorDexcom}
+  }
+
+  export function useDexcomToken(code) {
+    const {isLoading: isLoadingDexcomToken, data: dexcomToken, error: errorDexcomToken} = useQuery({
+        queryKey:"dexcom",
+        queryFn: () => getDexcomToken(code)
+    })
+
+    return {isLoadingDexcomToken, dexcomToken, errorDexcomToken}
   }
