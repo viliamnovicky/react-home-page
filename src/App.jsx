@@ -28,7 +28,7 @@ function App() {
         <ToDoList />
         {/* <Modal/> */}
         <Weather />
-        <Dexcom/>
+        {/* <Dexcom/> */}
     </QueryClientProvider>
   );
 }

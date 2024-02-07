@@ -80,7 +80,7 @@ function formatNumber(number) {
 
 function CryptoModal({ coin }) {
   return (
-    <>
+
       <StyledCryptoModal>
         <Background src={cryptoModalBg} />
         <Header>
@@ -121,7 +121,7 @@ function CryptoModal({ coin }) {
           </Box>
         </CryptoStats>
       </StyledCryptoModal>
-    </>
+ 
   );
 }
 

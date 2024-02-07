@@ -5,6 +5,8 @@ import { useState } from "react";
 import Button from "../../ui/Buttons";
 import Spinner from "../../ui/Spinner";
 import WeatherActual from "./WeatherActual";
+import WeatherModal from "./WeatherModal";
+import Modal from "../../ui/Modal";
 
 const StyledWeather = styled.div`
   width: 50vw;
@@ -23,21 +25,20 @@ const StyledWeather = styled.div`
     top: 3rem;
     height: 5rem;
     width: 45rem;
-
   }
 
   button {
-      position: absolute;
-      right: 1rem;
-      top: 3rem;
-      height: 5rem;
-      width: 11rem;
-    }
+    position: absolute;
+    right: 1rem;
+    top: 3rem;
+    height: 5rem;
+    width: 11rem;
+  }
 `;
 
 const WeatherHeader = styled.div`
   display: flex;
-`
+`;
 
 const Header = styled.h1`
   height: 5rem;
@@ -51,33 +52,46 @@ const Header = styled.h1`
   display: inline;
   background: var(--color-grey-500);
   border-radius: 1rem;
-`
+`;
 
 function Weather() {
   const [locationQuery, setLocationQuery] = useState("");
   const { isLoading, weatherData } = useWeatherData();
-  
+  const [isOpenModal, setIsOpenModal] = useState(true);
+  console.log(weatherData)
+
   return (
-    <StyledWeather>
-      {isLoading && <Spinner size={150} color={"var(--color-grey-50)"}/>}
-      {weatherData && (
-        <WeatherHeader>
-          {isLoading ? <Spinner/> : <Header>
-            {weatherData.location.name} <span>{weatherData.current.temp_c}°C</span>
-          </Header>}
-          <Button variation="primary" size="medium">
-            poloha
-          </Button>
-          <Search
-            query={locationQuery}
-            setQuery={setLocationQuery}
-            placeholder={"search location..."}
-            value={locationQuery}
-          />
-        </WeatherHeader>
+    <>
+      <StyledWeather>
+        {isLoading && <Spinner size={150} color={"var(--color-grey-50)"} />}
+        {weatherData && (
+          <WeatherHeader>
+            {isLoading ? (
+              <Spinner />
+            ) : (
+              <Header>
+                {weatherData.location.name} <span>{weatherData.current.temp_c}°C</span>
+              </Header>
+            )}
+            <Button variation="primary" size="medium">
+              poloha
+            </Button>
+            <Search
+              query={locationQuery}
+              setQuery={setLocationQuery}
+              placeholder={"search location..."}
+              value={locationQuery}
+            />
+          </WeatherHeader>
+        )}
+        <WeatherActual weather={weatherData} />
+      </StyledWeather>
+      {isOpenModal && (
+        <Modal setIsOpenModal={setIsOpenModal}>
+          <WeatherModal weatherData={weatherData} isLoadingWeather={isLoading}/>
+        </Modal>
       )}
-      <WeatherActual weather={weatherData}/>
-    </StyledWeather>
+    </>
   );
 }
 
