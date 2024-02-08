@@ -57,7 +57,7 @@ const Header = styled.h1`
 function Weather() {
   const [locationQuery, setLocationQuery] = useState("");
   const { isLoading, weatherData } = useWeatherData();
-  const [isOpenModal, setIsOpenModal] = useState(true);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   console.log(weatherData)
 
   return (
@@ -84,7 +84,7 @@ function Weather() {
             />
           </WeatherHeader>
         )}
-        <WeatherActual weather={weatherData} />
+        <WeatherActual weather={weatherData} onClick = {() => setIsOpenModal(true)}/>
       </StyledWeather>
       {isOpenModal && (
         <Modal setIsOpenModal={setIsOpenModal}>

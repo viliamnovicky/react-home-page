@@ -18,11 +18,12 @@ const WeatherContainer = styled.div`
   height: calc(100% - 10rem);
   background: white;
   color: var(--color-dark-1);
+  cursor: pointer;
 `;
 
-function WeatherActual({ weather }) {
+function WeatherActual({ weather, onClick }) {
   return (
-    <WeatherContainer>
+    <WeatherContainer onClick={onClick}>
       {weather && (
         <>
           <WeatherCont
