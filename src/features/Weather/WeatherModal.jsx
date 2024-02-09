@@ -34,7 +34,23 @@ const Grid = styled.div`
   border-bottom-left-radius: 2rem;
 `;
 
-const Data = styled.p``;
+const Data = styled.p`
+color: var(--color-grey-50);
+font-size: 1.6rem;
+text-transform: uppercase;
+font-weight: 100;
+span {
+  display: block;
+  padding-top: 1rem;
+  font-size: 2rem;
+}
+`;
+
+const Hours = styled.div`
+  grid-column: 1 / 4;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+`
 
 function WeatherModal({ weatherData, isLoadingWeather }) {
   const [day, setDay] = useState(0);
@@ -48,10 +64,24 @@ function WeatherModal({ weatherData, isLoadingWeather }) {
         <Day index={2} weatherData={weatherData} onClick={() => setDay(2)} />
       </Days>
       <Grid>
-        <Data>{weatherData.forecast.forecastday[day].day.condition.text}</Data>
-        <Data>{weatherData.forecast.forecastday[day].day.daily_chance_of_rain}%</Data>
-        <Data>{weatherData.forecast.forecastday[day].date}</Data>
-        <Data>{weatherData.forecast.forecastday[day].date}</Data>
+        <Hours>
+          <Data>4:00 <span>{weatherData.forecast.forecastday[day].hour[4].temp_c} °C</span></Data>
+          <Data>8:00 <span>{weatherData.forecast.forecastday[day].hour[8].temp_c} °C</span></Data>
+          <Data>12:00 <span>{weatherData.forecast.forecastday[day].hour[12].temp_c} °C</span></Data>
+          <Data>16:00 <span>{weatherData.forecast.forecastday[day].hour[16].temp_c} °C</span></Data>
+          <Data>20:00 <span>{weatherData.forecast.forecastday[day].hour[12].temp_c} °C</span></Data>
+          <Data>24:00 <span>{weatherData.forecast.forecastday[day].hour[23].temp_c} °C</span></Data>
+        </Hours>
+        <Data>Sunrise<span>{weatherData.forecast.forecastday[day].astro.sunrise}</span></Data>
+        <Data>Condition:<span>{weatherData.forecast.forecastday[day].day.condition.text}</span></Data>
+        <Data>Sunset<span>{weatherData.forecast.forecastday[day].astro.sunset}</span></Data>
+        <Data>Max Temperature<span>{weatherData.forecast.forecastday[day].day.maxtemp_c} °C</span></Data>
+        <Data>Rain possibility<span>{weatherData.forecast.forecastday[day].day.daily_chance_of_rain} %</span></Data>
+        <Data>Min Temperature<span>{weatherData.forecast.forecastday[day].day.mintemp_c} °C</span></Data>
+        <Data>Humidity<span>{weatherData.forecast.forecastday[day].day.avghumidity} %</span></Data>
+        <Data>Visibility<span>{weatherData.forecast.forecastday[day].day.avgvis_km} km</span></Data>
+        <Data>Wind<span>{weatherData.forecast.forecastday[day].day.maxwind_kph} km/h</span></Data>
+        
       </Grid>
     </StyledWeatherModal>
   );
