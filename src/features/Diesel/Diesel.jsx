@@ -2,6 +2,9 @@ import { useDieselAustriaData, useDieselGermanyData } from "./useDieselData";
 import dieselBG from "../../img/icons/diesel.svg";
 import styled from "styled-components";
 import Spinner from "../../ui/Spinner";
+import { useState } from "react";
+import DieselModal from "./DieselModal";
+import Modal from "../../ui/Modal";
 
 const Loading = styled.p`
   font-size: 2rem;
@@ -65,7 +68,12 @@ const Place = styled.p`
   width: 18vw;
   margin: auto;
   position: relative;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid var(--color-grey-300);
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(47, 47, 47, 0.5);
+  }
 
   &:last-child {
     border-bottom: none;
@@ -82,12 +90,20 @@ const Error = styled.p`
   text-align: center;
   padding-top: 2rem;
   text-transform: uppercase;
-`
+`;
 
 function Diesel() {
   const { isLoadingDieselGermany, dieselGermanyData, errorGermany } = useDieselGermanyData();
   const { isLoadingDieselAustria, dieselAustriaData, errorAustria } = useDieselAustriaData();
-  console.log(errorGermany);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [place, setPlace] = useState("");
+
+  function handleOpenDieselModal(station) {
+    setPlace(station);
+    setIsOpenModal(true);
+    console.log(place)
+  }
+
   if (isLoadingDieselGermany || isLoadingDieselAustria)
     return (
       <DieselCont>
@@ -96,26 +112,34 @@ function Diesel() {
       </DieselCont>
     );
   return (
-    <DieselCont>
-      <StyledDiesel>
-        {errorGermany && <Error>An error occured by receiving Germany data</Error>}
-        {dieselGermanyData?.stations?.length > 0 && <Header>Germany</Header>}
-        {dieselGermanyData?.stations &&
-          dieselGermanyData?.stations?.map((station) => (
-            <Place key={station.name + station.street}>
-              {station.brand} {station.street}, {station.place}:<span>{station.diesel}€</span>
-            </Place>
-          ))}
-        <Header>Austria</Header>
-        {dieselAustriaData &&
-          dieselAustriaData.map((station) => (
-            <Place key={station.name}>
-              {station.name}:<span>{station.prices[0] ? station.prices[0].amount : "?.???"}€</span>
-            </Place>
-          ))}
-      </StyledDiesel>
-      <Img src={dieselBG} alt="gasoline graphic" />
-    </DieselCont>
+    <>
+      <DieselCont>
+        <StyledDiesel>
+          {errorGermany && <Error>An error occured by receiving Germany data</Error>}
+          {dieselGermanyData?.stations?.length > 0 && <Header>Germany</Header>}
+          {dieselGermanyData?.stations &&
+            dieselGermanyData?.stations?.map((station) => (
+              <Place key={station.name + station.street} onClick={() => handleOpenDieselModal(station)}>
+                {station.brand} {station.street}, {station.place}:<span>{station.diesel}€</span>
+              </Place>
+            ))}
+          <Header>Austria</Header>
+          {dieselAustriaData &&
+            dieselAustriaData.map((station) => (
+              <Place key={station.name} onClick={() => handleOpenDieselModal(station)}>
+                {station.name}:
+                <span>{station.prices[0] ? station.prices[0].amount : "?.???"}€</span>
+              </Place>
+            ))}
+        </StyledDiesel>
+        <Img src={dieselBG} alt="gasoline graphic" />
+      </DieselCont>
+      {isOpenModal && (
+        <Modal setIsOpenModal={setIsOpenModal}>
+          <DieselModal place={place}/>
+        </Modal>
+      )}
+    </>
   );
 }
 

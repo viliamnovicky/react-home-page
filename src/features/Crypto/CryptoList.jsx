@@ -14,8 +14,6 @@ function CryptoList({ query, setQuery }) {
   function handleOpenModal(coin) {
     setIsOpenModal(true);
     setCoin(coin);
-    console.log(coin);
-    console.log(coin.id.includes("b"));
   }
 
   return (
