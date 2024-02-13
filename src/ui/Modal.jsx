@@ -14,7 +14,7 @@ const Outer = styled.div`
 const Inner = styled.div`
   width: 70vw;
   height: 75vh;
-  background: var(--color-grey-50);
+  background: transparent;
   border-radius: 2rem;
   position: absolute;
   left: 50%;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Spinner from "../../ui/Spinner";
+import Map from "../Map/Map";
 
 const StyledDieselModal = styled.div`
   width: 100%;
@@ -12,7 +13,9 @@ const StyledDieselModal = styled.div`
   grid-template-columns: repeat(3, 1fr);
   border-radius: 2rem;
   overflow: hidden;
-  background: var(--color-grey-600);
+  gap: 1rem;
+  background: transparent;
+  border: 1px solid var(--color-grey-50);
 `;
 
 const Header = styled.h1`
@@ -24,10 +27,10 @@ const Header = styled.h1`
   font-size: 4rem;
   font-weight: 100;
   color: var(--color-grey-50);
-  background: var(--color-grey-500);
   align-items: center;
   justify-content: center;
   border-radius: 2rem;
+  z-index: 10;
 `;
 
 const Data = styled.p`
@@ -40,6 +43,9 @@ const Data = styled.p`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index: 10;
+  background: rgba(26, 26, 26, 0.5);
+  border-radius: 2rem;
 
   span {
     display: block;
@@ -52,6 +58,7 @@ function DieselModal({ place }) {
   if (place.brand)
     return (
       <StyledDieselModal>
+        <Map lng={place.lng} lat={place.lat} />
         <Header>
           {place.name} - {place.place}
         </Header>
@@ -62,7 +69,7 @@ function DieselModal({ place }) {
           Petrol e5<span>{place.e5} €</span>
         </Data>
         <Data>
-          Petrol e10<span>{place.e10} €</span>
+          Petrol e10<span>{place.e10 ? place.e10 : "?.???"} €</span>
         </Data>
         <Data></Data>
         <Data>{place.isOpen ? <span>Open</span> : <span>Closed</span>}</Data>
@@ -74,6 +81,7 @@ function DieselModal({ place }) {
     );
   return (
     <StyledDieselModal>
+      <Map lng={place.location.longitude} lat={place.location.latitude} />
       <Header>
         {place.name} - {place.location.city}
       </Header>
