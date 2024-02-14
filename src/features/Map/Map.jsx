@@ -19,15 +19,24 @@ const MapContainer = styled.div`
   cursor: disabled;
 `;
 
+const CustomMarker = styled.div`
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  background: var(--color-grey-200);
+  transform: translate(-50%, -50%);
+  bottom: 50%;
+  left: 50%;
+  border-radius: 50%;
+`
+
 function Map({ lng, lat, children }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const zoom = 16;
 
-  const marker = new mapboxgl.Marker({
-    color: "#ffffff",
-    symbol: 1
-    }).setLngLat([lng, lat])
+  const marker = new mapboxgl.Marker(CustomMarker).setLngLat([lng, lat])
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -47,6 +56,7 @@ function Map({ lng, lat, children }) {
 
   return (
     <MapContainer ref={mapContainer}>
+      <CustomMarker/>
       {children}
     </MapContainer>
   );

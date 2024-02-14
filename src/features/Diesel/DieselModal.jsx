@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Spinner from "../../ui/Spinner";
 import Map from "../Map/Map";
+import Button from "../../ui/Buttons";
 
 const StyledDieselModal = styled.div`
   width: 100%;
@@ -54,6 +55,23 @@ const Data = styled.p`
   }
 `;
 
+const Link = styled.a`
+  color: var(--color-grey-50);
+  background-color: var(--color-grey-500);
+  border-radius: 1rem;
+  width: 20rem;
+  height: 5rem;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+
+  &:hover {
+    background-color: var(--color-grey-700);
+  }
+`;
+
 function DieselModal({ place }) {
   if (place.brand)
     return (
@@ -75,7 +93,11 @@ function DieselModal({ place }) {
         <Data>{place.isOpen ? <span>Open</span> : <span>Closed</span>}</Data>
         <Data></Data>
         <Data></Data>
-        <Data></Data>
+        <Data>
+          <Link href={`https://www.google.com/maps/@${place.lat},${place.lng},18z?entry=ttu`} target="_blank" >
+            Open in map
+          </Link>
+        </Data>
         <Data></Data>
       </StyledDieselModal>
     );

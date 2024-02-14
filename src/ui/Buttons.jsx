@@ -15,6 +15,10 @@ const sizes = {
     width: 15rem;
     height: 5rem;
   `,
+  extra_large: css`
+  width: 20rem;
+  height: 5rem;
+`,
 };
 
 const variations = {
