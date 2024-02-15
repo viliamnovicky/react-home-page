@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Spinner from "../../ui/Spinner";
 import Map from "../Map/Map";
 import Button from "../../ui/Buttons";
+import { useGeolocation } from "../Weather/useGeolocation";
 
 const StyledDieselModal = styled.div`
   width: 100%;
@@ -73,6 +74,7 @@ const Link = styled.a`
 `;
 
 function DieselModal({ place }) {
+  const position = useGeolocation();
   if (place.brand)
     return (
       <StyledDieselModal>
@@ -94,7 +96,10 @@ function DieselModal({ place }) {
         <Data></Data>
         <Data></Data>
         <Data>
-          <Link href={`https://www.google.com/maps/@${place.lat},${place.lng},18z?entry=ttu`} target="_blank" >
+          <Link
+            href={`https://www.google.com/maps/place/${place.lat},${place.lng}`}
+            target="_blank"
+          >
             Open in map
           </Link>
         </Data>
