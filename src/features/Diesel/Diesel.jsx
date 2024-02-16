@@ -101,7 +101,6 @@ function Diesel() {
   function handleOpenDieselModal(station) {
     setPlace(station);
     setIsOpenModal(true);
-    console.log(place)
   }
 
   if (isLoadingDieselGermany || isLoadingDieselAustria)

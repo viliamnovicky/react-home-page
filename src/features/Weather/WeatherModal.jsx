@@ -85,9 +85,9 @@ function WeatherModal({ weatherData, isLoadingWeather }) {
   return (
     <StyledWeatherModal>
       <Days>
-        <Day index={0} weatherData={weatherData} onClick={() => setDay(0)} />
-        <Day index={1} weatherData={weatherData} onClick={() => setDay(1)} />
-        <Day index={2} weatherData={weatherData} onClick={() => setDay(2)} />
+        <Day active={day === 0} index={0} weatherData={weatherData} onClick={() => setDay(0)} />
+        <Day active={day === 1} index={1} weatherData={weatherData} onClick={() => setDay(1)} />
+        <Day active={day === 2} index={2} weatherData={weatherData} onClick={() => setDay(2)} />
       </Days>
       <Grid>
         <Hours>

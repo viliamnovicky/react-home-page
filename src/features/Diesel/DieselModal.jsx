@@ -122,7 +122,12 @@ function DieselModal({ place }) {
         Petrol e10<span>?.??? €</span>
       </Data>
       <Data></Data>
-      <Data>{place.open ? <span>Open</span> : <span>Closed</span>}</Data>
+      <Data><Link
+            href={`https://www.google.com/maps/place/${place.location.latitude},${place.location.longitude}`}
+            target="_blank"
+          >
+            Open in map
+          </Link></Data>
       <Data></Data>
       <Data></Data>
       <Data></Data>
